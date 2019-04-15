@@ -1,0 +1,9 @@
+C:\Users\Project OS\Desktop\Mods\Voldemort Spells\Harry Potter Spells\Project Voldemort\bin\Debug\Project Voldemort.dll
+C:\Users\Project OS\Desktop\Mods\Voldemort Spells\Harry Potter Spells\Project Voldemort\bin\Debug\Project Voldemort.pdb
+C:\Users\Project OS\Desktop\Mods\Voldemort Spells\Harry Potter Spells\Project Voldemort\bin\Debug\ScriptHookVDotNet2.dll
+C:\Users\Project OS\Desktop\Mods\Voldemort Spells\Harry Potter Spells\Project Voldemort\bin\Debug\ScriptHookVDotNet2.xml
+C:\Users\Project OS\Desktop\Mods\Voldemort Spells\Harry Potter Spells\Project Voldemort\obj\Debug\Project Voldemort.csprojAssemblyReference.cache
+C:\Users\Project OS\Desktop\Mods\Voldemort Spells\Harry Potter Spells\Project Voldemort\obj\Debug\Project Voldemort.csproj.CoreCompileInputs.cache
+C:\Users\Project OS\Desktop\Mods\Voldemort Spells\Harry Potter Spells\Project Voldemort\obj\Debug\Project Voldemort.csproj.CopyComplete
+C:\Users\Project OS\Desktop\Mods\Voldemort Spells\Harry Potter Spells\Project Voldemort\obj\Debug\Project Voldemort.dll
+C:\Users\Project OS\Desktop\Mods\Voldemort Spells\Harry Potter Spells\Project Voldemort\obj\Debug\Project Voldemort.pdb
