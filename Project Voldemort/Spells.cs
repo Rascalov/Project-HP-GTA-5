@@ -18,7 +18,6 @@ namespace Project_Voldemort
         private List<int> LoopedAnimaties = new List<int>();
         private List<int> vuurlijst = new List<int>();
         private int decide = 1;
-        private Ped player = Game.Player.Character; // Speler Ped
         private int keeps;
         public Spells()
         {
@@ -33,7 +32,7 @@ namespace Project_Voldemort
         {
             #region Finished(Per definitie)     
             if (e.KeyCode == Keys.X && !player.IsInVehicle()) { Nyeaaaaah(); } // Scream baby
-            if (e.KeyCode == Keys.E && Game.Player.IsAiming && player.Weapons.Current.Hash == WeaponHash.FlareGun && !player.IsInVehicle())
+            if (e.KeyCode == Keys.E && Game.Player.IsAiming && player.Weapons.Current.Hash == WeaponHash.FlareGun && !player.IsInVehicle() || e.KeyCode == Keys.E && Toggled)
             {
                 ExplosionBeam();
             }
@@ -207,15 +206,6 @@ namespace Project_Voldemort
             // Soundeffect
         }
         #endregion
-
-        private void newStuff()
-        {
-
-        }
-        private void propKilling()
-        {
-           
-        }
 
         void ExplosionOfMadness()
         {
