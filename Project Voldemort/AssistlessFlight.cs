@@ -33,7 +33,7 @@ namespace Project_Voldemort
                         {
                             Function.Call(Hash.SET_PED_TO_RAGDOLL, entity, 2000, 2000, 0, false, false, false);
                         }
-                        entity.ApplyForce(player.ForwardVector * 7, player.RightVector * 3);
+                        entity.ApplyForce(player.ForwardVector * 7, player.RightVector * 2);
                     }
                 }
             }
@@ -69,7 +69,7 @@ namespace Project_Voldemort
             Toggled = true;
             player.HasCollision = false;
             player.IsVisible = false;
-            player.Task.PlayAnimation("veh@bike@police@front@base", "sit_balance_fwd", 2, 1999999999, (AnimationFlags)39);
+            player.Task.PlayAnimation("veh@bike@police@front@base", "sit_balance_fwd", 2, 1999999999, AnimationFlags.StayInEndFrame);
             
         }
         private void FlyDisable()
@@ -87,53 +87,5 @@ namespace Project_Voldemort
            
         }
 
-    }
-
-    /*
-    #region MovementInToggledMode
-    class ForwardForce : GeneralTools
-    {
-        public ForwardForce()
-        {
-            this.Tick += onTick;
-            
-        }
-        private void onTick(object sender, EventArgs e)
-        {
-            if (Keyboard.IsKeyDown(Key.W) && Toggled)
-            {
-                player.ApplyForce(player.ForwardVector * 4.5f);
-            }
-        }
-    }
-    class LeftForce : GeneralTools
-    {
-        public LeftForce()
-        {
-            this.Tick += onTick;
-        }
-        private void onTick(object sender, EventArgs e)
-        {
-            if (Keyboard.IsKeyDown(Key.A) && Toggled)
-            {
-                player.ApplyForce(player.RightVector * -2.5f);
-            }
-        }
-        
-    }
-    class RightForce : GeneralTools
-    {
-
-    }
-    class UpForce : GeneralTools
-    {
-
-    }
-    class DownForce : GeneralTools
-    {
-
-    }
-    #endregion
-    */
-    
+    }    
 }

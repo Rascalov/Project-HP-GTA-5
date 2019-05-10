@@ -26,8 +26,9 @@ namespace Project_Voldemort
         {
             if (Toggled)
             {
-                LoadPTFX("scr_agencyheistb");
-                PlayParticlefx("scr_agencyheistb", "scr_agency3b_elec_box", player.Position + player.ForwardVector, 2, particleLijst);
+                // Smoke, dict: scr_agencyheistb name: scr_agency3b_elec_box
+                LoadPTFX("core");
+                PlayParticlefx("core", "blood_mist", player.Position, 0.6, particleLijst);
                 player.ApplyForce(player.UpVector * 0.01f);
                 if (particleLijst.Count > 2)
                 {

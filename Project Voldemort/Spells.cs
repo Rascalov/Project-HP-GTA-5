@@ -115,21 +115,23 @@ namespace Project_Voldemort
         #region Spells
         private void Nyeaaaaah() //  ShockWave/Explosion
         {
+            // scr_xm_submarine_surface_explosion from scr_xm_submarine
+            // exp_water from core
             player.IsInvincible = true;
             player.CanRagdoll = false;
-            string ptfx = "scr_xm_submarine";
+            string ptfx = "core";
             LoadPTFX(ptfx);
             player.Task.PlayAnimation("rcmcollect_paperleadinout@", "meditiate_idle", 3, 3500, AnimationFlags.Loop); //charge anim
             PlaySound("Charging.wav"); // charge sound
             Wait(3500); // Hold untill Sound is played (around 3.5 seconds)   
-            PlayParticlefx(ptfx, "scr_xm_submarine_surface_explosion", player.Position, 3.0); // scr_xm_submarine_surface_explosion
+            PlayParticlefx(ptfx, "exp_water", player.Position, 3.0); // scr_xm_submarine_surface_explosion
             World.AddOwnedExplosion(player, Game.Player.Character.Position, (ExplosionType)39, 10.0f, 1f, true, false); // Modified Snowball (exType 39) explosion
             player.Task.PlayAnimation("random@arrests", "kneeling_arrest_get_up");
             PlaySound("VoldemortScream.wav"); // Nyeaaaaah
             for (int i = 0; i < 2; i++)
             {
                 Wait(400);
-                PlayParticlefx(ptfx, "scr_xm_submarine_surface_explosion", new Vector3(player.Position.X, player.Position.Y, player.Position.Z + 2), 20.0);
+                PlayParticlefx(ptfx, "exp_water", new Vector3(player.Position.X, player.Position.Y, player.Position.Z + 2), 20.0);
                 World.AddOwnedExplosion(player, Game.Player.Character.Position, (ExplosionType)39, 0.5f, 1f, true, false); // Modified Snowball (exType 39) explosion
             }
             Wait(4300); //
@@ -141,18 +143,26 @@ namespace Project_Voldemort
         }
         private void ExplosionBeam() // straight from face explosions with increased radius per explosion
         {
+            // blood_stungun from core
+            // scr_trev1_trailer_boosh from scr_trevor1
+            // ent_amb_elec_crackle_sp from core
+            Vector3 cam = GameplayCamera.Direction;
             Vector3 camPos = Function.Call<Vector3>(Hash.GET_GAMEPLAY_CAM_COORD);
             Vector3 Rpos = new Vector3(0, 0, 0);
             PlaySound("Grunt" + decide + ".wav");
             string ptfx = "scr_trevor1";
             LoadPTFX(ptfx);
-            Function.Call(Hash._SET_PTFX_ASSET_NEXT_CALL, ptfx);
-            for (float r = 8; r < 60; r += 3)
+            float max = 60;
+            if (Toggled)
             {
-                Rpos = camPos + (GameplayCamera.Direction * r);
+                max = 120;
+            }
+            for (float r = 8; r < max; r += 3)
+            {
+                Rpos = camPos + (cam * r);
                 World.AddOwnedExplosion(player, Rpos, ExplosionType.Plane, 1.2f, 0.2f, false, true);
                 PlayParticlefx(ptfx, "scr_trev1_trailer_boosh", Rpos, 3.5);
-                Wait(5);
+                Wait(4);
             }
             Wait(200);
             World.AddOwnedExplosion(player, Rpos, ExplosionType.Plane, 1.4f, 1.2f, true, false);
@@ -239,7 +249,7 @@ namespace Project_Voldemort
                 }
                 Wait(25);
             }
-
+            
         }
 
         void LaserBeam()

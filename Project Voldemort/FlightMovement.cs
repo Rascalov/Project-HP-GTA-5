@@ -37,7 +37,7 @@ namespace Project_Voldemort
         {
             if (e.KeyCode == Keys.ShiftKey)
             {
-                amplifier = 100.3f;
+                amplifier = 200;
                 UI.ShowSubtitle($"Speeding up to {amplifier}");
             }
 
@@ -61,11 +61,11 @@ namespace Project_Voldemort
                 }
                 if ((Game.IsKeyPressed(Keys.S)))
                 {
-                    player.ApplyForce(player.ForwardVector * -amplifier);
+                    player.ApplyForce(GameplayCamera.Direction * -amplifier);
                 }
                 if (Game.IsKeyPressed(Keys.Space))
                 {
-                    player.ApplyForce(player.UpVector * 0.4f);
+                    player.ApplyForce(player.UpVector * 1.4f);
                 }
             }
             
