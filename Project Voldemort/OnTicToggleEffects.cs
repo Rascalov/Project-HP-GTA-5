@@ -26,16 +26,15 @@ namespace Project_Voldemort
         {
             if (Toggled)
             {
-                // Smoke, dict: scr_agencyheistb name: scr_agency3b_elec_box
-                LoadPTFX("core");
-                PlayParticlefx("core", "blood_mist", player.Position, 0.6, particleLijst);
+                // Smoke, dict: scr_agencyheistb name: scr_agency3b_elec_box core", "blood_mist
+                LoadPTFX("scr_agencyheistb");
+                PlayParticlefx("scr_agencyheistb", "scr_agency3b_elec_box", player.Position, 2.2, particleLijst);
+                PlayParticlefx("scr_agencyheistb", "scr_agency3b_elec_box", player.Position - player.ForwardVector, 1.2);
                 player.ApplyForce(player.UpVector * 0.01f);
-                if (particleLijst.Count > 2)
+                if (particleLijst.Count > 6)
                 {
                     Function.Call(Hash.REMOVE_PARTICLE_FX, particleLijst[1], 0);
-                    UI.Notify(particleLijst.Remove(1).ToString());
                 }
-                
             }
             Wait(10);
 

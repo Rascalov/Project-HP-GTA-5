@@ -32,13 +32,14 @@ namespace Project_Voldemort
         {
             #region Finished(Per definitie)     
             if (e.KeyCode == Keys.X && !player.IsInVehicle()) { Nyeaaaaah(); } // Scream baby
-            if (e.KeyCode == Keys.E && Game.Player.IsAiming && player.Weapons.Current.Hash == WeaponHash.FlareGun && !player.IsInVehicle() || e.KeyCode == Keys.E && Toggled)
+            if (e.KeyCode == Keys.E && Game.Player.IsAiming && player.Weapons.Current.Hash == WeaponHash.FlareGun && !player.IsInVehicle())
             {
                 ExplosionBeam();
             }
             if (e.KeyCode == Keys.Z) { ExplosionOfMadness(); }
             if (e.KeyCode == Keys.B) { AvadaKedavra(); }
-            #endregion 
+            if (Toggled  && e.KeyCode == Keys.E) { FlightExplosionBeam(); }
+            #endregion
             // B E X Z, in huidig gebruik
 
             if (e.KeyCode == Keys.J)
@@ -165,6 +166,42 @@ namespace Project_Voldemort
                 Wait(4);
             }
             Wait(200);
+            World.AddOwnedExplosion(player, Rpos, ExplosionType.Plane, 1.4f, 1.2f, true, false);
+            switch (decide) // switch between grunt audios
+            {
+                case 1:
+                    decide = 2;
+                    break;
+                case 2:
+                    decide = 3;
+                    break;
+                case 3:
+                    decide = 1;
+                    break;
+            }
+
+        }
+        private void FlightExplosionBeam() // straight from face explosions with increased radius per explosion
+        {
+            // blood_stungun from core
+            // scr_trev1_trailer_boosh from scr_trevor1
+            // ent_amb_elec_crackle_sp from core
+            Vector3 cam = GameplayCamera.Direction;
+            Vector3 camPos = Function.Call<Vector3>(Hash.GET_GAMEPLAY_CAM_COORD);
+            Vector3 Rpos = new Vector3(0, 0, 0);
+            PlaySound("Grunt" + decide + ".wav");
+            string ptfx = "scr_trevor1";
+            double scale = 3.5;
+            LoadPTFX(ptfx);
+            for (float r = 8; r < 120; r += 3)
+            {
+                Rpos = camPos + (cam * r);
+                World.AddOwnedExplosion(player, Rpos, ExplosionType.Barrel, 1.2f, 0.2f, false, true);
+                PlayParticlefx(ptfx, "scr_trev1_trailer_boosh", Rpos, scale);
+                scale += 2;
+                Wait(5);
+            }
+            Wait(50);
             World.AddOwnedExplosion(player, Rpos, ExplosionType.Plane, 1.4f, 1.2f, true, false);
             switch (decide) // switch between grunt audios
             {

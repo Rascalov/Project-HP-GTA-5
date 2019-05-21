@@ -50,7 +50,7 @@ namespace Project_Voldemort
                     player.ApplyForce(GameplayCamera.Direction * 4);
                 }
             }
-            if (e.KeyCode == Keys.U)
+            if (e.KeyCode == Keys.G)
             {
                 if (!Toggled)
                 {
@@ -67,9 +67,14 @@ namespace Project_Voldemort
             UI.ShowSubtitle("Flying enabled");
             player.HasGravity = false;
             Toggled = true;
-            player.HasCollision = false;
-            player.IsVisible = false;
-            player.Task.PlayAnimation("veh@bike@police@front@base", "sit_balance_fwd", 2, 1999999999, AnimationFlags.StayInEndFrame);
+            player.CanRagdoll = false;
+            LoadPTFX("core");
+            PlayParticlefx("core", "ent_ray_heli_aprtmnt_exp", player.Position, 3.0);
+            player.HasCollision = true; // turned
+            player.IsVisible = false; // turned
+            PlaySound("Flight.wav");
+            
+          //  player.Task.PlayAnimation("veh@bike@police@front@base", "sit_balance_fwd", 2, 1999999999, AnimationFlags.Loop);
             
         }
         private void FlyDisable()
@@ -78,9 +83,16 @@ namespace Project_Voldemort
             player.HasGravity = true;
             Toggled = false;
             player.HasCollision = true;
-
+            LoadPTFX("core");
+            PlayParticlefx("core", "ent_ray_heli_aprtmnt_exp", player.Position, 3.0);
+            player.CanRagdoll = true;
             player.IsVisible = true;
-            player.Task.ClearAnimation("veh@bike@police@front@base", "sit_balance_fwd");
+            PlaySound("Grounding.wav");
+            player.FreezePosition = true;
+            Wait(40);
+            player.FreezePosition = false;
+            
+            //  player.Task.ClearAnimation("veh@bike@police@front@base", "sit_balance_fwd");
         }
         private void onKeyDown(object sender, KeyEventArgs e)
         {
