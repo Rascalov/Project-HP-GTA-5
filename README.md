@@ -8,7 +8,7 @@ https://www.gta5-mods.com/scripts/harry-potter-voldemort-spells-mod
 <h3> Electric beam </h3>
 https://www.youtube.com/embed/9Kzt-yKdFeE
 
-<h3> Circle Exlosions </h3>
+<h3> Circle Explosions </h3>
 https://www.youtube.com/watch?v=2D4E5VQoW6c
 
 <h3> Shockwave </h3>
